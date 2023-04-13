@@ -28,11 +28,11 @@ jobs:
         push: true
         tags: ghcr.io/${{ github.repository_owner }}/domo-nginx-dht-amd64:latest
         context: docker
-        file: docker/Dockerfile-amd64
+        file: docker/Dockerfile
     - name: Build and push arm64v8
       uses: docker/build-push-action@v4
       with:
         push: true
         tags: ghcr.io/${{ github.repository_owner }}/domo-nginx-dht-arm64v8:latest
-        context: docker/
+        context: docker
         file: docker/Dockerfile-OpenWrt
