@@ -2,7 +2,7 @@ FROM ghcr.io/max-lt/nginx-jwt-module:latest
 
 COPY nginx.conf /etc/nginx
 
-ADD public_key_yggio.pem.pem /public.pem
+ADD public_key_yggio.pem /public.pem
 
 EXPOSE 8000
 
