@@ -1,4 +1,4 @@
-FROM ghcr.io/domo-iot/domo-nginx-jwt-base-amd64:latest
+FROM ghcr.io/domo-iot/domo-nginx-jwt-base-arm64:latest
 
 COPY nginx.conf /etc/nginx
 

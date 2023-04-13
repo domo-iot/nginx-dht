@@ -1,0 +1,38 @@
+name: cross
+
+on:
+  push:
+    branches: [ "master"]
+    tags:
+      - 'v*.*.*'
+
+jobs:
+
+  cross-compile:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+    - name: Login to GitHub container registry (ghcr.io)
+      uses: docker/login-action@v2
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build and push x86
+      uses: docker/build-push-action@v4
+      with:
+        push: true
+        tags: ghcr.io/${{ github.repository_owner }}/domo-nginx-dht-amd64:latest
+        context: docker
+        file: docker/Dockerfile-amd64
+    - name: Build and push arm64v8
+      uses: docker/build-push-action@v4
+      with:
+        push: true
+        tags: ghcr.io/${{ github.repository_owner }}/domo-nginx-dht-arm64v8:latest
+        context: docker/
+        file: docker/Dockerfile-OpenWrt
