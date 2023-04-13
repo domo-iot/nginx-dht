@@ -1,5 +1,6 @@
 FROM ghcr.io/domo-iot/domo-nginx-jwt-base-arm64:latest
 
+
 COPY nginx.conf /etc/nginx
 
 ADD public_key_yggio.pem /public.pem
