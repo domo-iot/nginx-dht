@@ -8,4 +8,7 @@ EXPOSE 8000
 
 STOPSIGNAL SIGTERM
 
+#ADD Cert.pem /
+#ADD Key.pem /
+
 CMD ["nginx", "-g", "daemon off;"]
